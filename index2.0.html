@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Movie Collection</title>
+
+<style>
+body{
+  margin:0;
+  background:#0e0e0e;
+  color:#fff;
+  font-family:Arial,sans-serif;
+}
+
+header{
+  text-align:center;
+  padding:15px;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.search-box{
+  width:90%;
+  margin:10px auto;
+  display:block;
+  padding:10px;
+  border-radius:8px;
+  border:none;
+}
+
+.movie-container{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  padding:12px;
+}
+
+.movie-card{
+  background:#1b1b1b;
+  border-radius:12px;
+  padding:8px;
+  cursor:pointer;
+}
+
+.movie-card img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.movie-card h3{
+  font-size:14px;
+  margin:6px 0 4px;
+}
+
+/* DETAILS PAGE */
+#detailPage{
+  display:none;
+  padding:15px;
+}
+
+#detailPage img{
+  width:100%;
+  border-radius:12px;
+}
+
+.back-btn{
+  background:#0088cc;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:20px;
+  display:inline-block;
+  margin-bottom:10px;
+  cursor:pointer;
+}
+
+.download-btn{
+  display:block;
+  margin:10px 0;
+  padding:10px;
+  background:#00a859;
+  text-align:center;
+  color:white;
+  border-radius:8px;
+  text-decoration:none;
+}
+
+.social{
+  text-align:center;
+  margin:20px 0;
+}
+
+.social a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:20px;
+  color:white;
+  text-decoration:none;
+}
+
+.telegram{background:#0088cc;}
+.instagram{background:#e1306c;}
+
+footer{
+  text-align:center;
+  font-size:12px;
+  color:#777;
+  padding:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>🎬 My Movie Collection</header>
+
+<input type="text" id="searchInput" class="search-box" placeholder="Search movies...">
+
+<!-- MOVIE LIST -->
+<div id="movieList" class="movie-container">
+
+  <div class="movie-card"
+    onclick="openDetail(
+      'Raanjhanaa (2013)',
+      'https://i.ibb.co/XRPnHBz/5d4f885809deab1f9f0a2b78182ceda9.jpg',
+      'Romantic / Drama Hindi Movie',
+      '480p | 720p | 1080p',
+      '#'
+    )">
+    <img src="https://i.ibb.co/XRPnHBz/5d4f885809deab1f9f0a2b78182ceda9.jpg">
+    <h3>Raanjhanaa (2013)</h3>
+  </div>
+
+  <div class="movie-card"
+    onclick="openDetail(
+      'The Look of Silence',
+      'https://i.ibb.co/5Wm4DqG/poster.jpg',
+      'Indonesian Movie with Subtitles',
+      '720p | 1080p',
+      '#'
+    )">
+    <img src="https://i.ibb.co/5Wm4DqG/poster.jpg">
+    <h3>The Look of Silence</h3>
+  </div>
+
+</div>
+
+<!-- DETAILS PAGE -->
+<div id="detailPage">
+  <div class="back-btn" onclick="goBack()">⬅ Back</div>
+  <img id="detailImg">
+  <h2 id="detailTitle"></h2>
+  <p id="detailDesc"></p>
+  <p id="detailQuality"></p>
+  <a id="detailDownload" class="download-btn" target="_blank">Download Movie</a>
+
+  <div class="social">
+    <a href="https://t.me/+Kqduway3ffthMTY1" class="telegram" target="_blank">Telegram</a>
+    <a href="https://www.instagram.com/shoav_khan_00" class="instagram" target="_blank">Instagram</a>
+  </div>
+</div>
+
+<footer>
+© 2026 My Collection | All files belong to their owners
+</footer>
+
+<script>
+function openDetail(title,img,desc,quality,link){
+  document.getElementById("movieList").style.display="none";
+  document.getElementById("searchInput").style.display="none";
+  document.getElementById("detailPage").style.display="block";
+
+  detailTitle.innerText=title;
+  detailImg.src=img;
+  detailDesc.innerText=desc;
+  detailQuality.innerText="Quality: "+quality;
+  detailDownload.href=link;
+}
+
+function goBack(){
+  document.getElementById("detailPage").style.display="none";
+  document.getElementById("movieList").style.display="grid";
+  document.getElementById("searchInput").style.display="block";
+}
+
+const searchInput=document.getElementById("searchInput");
+const cards=document.querySelectorAll(".movie-card");
+
+searchInput.addEventListener("keyup",()=>{
+  const value=searchInput.value.toLowerCase();
+  cards.forEach(card=>{
+    card.style.display=card.innerText.toLowerCase().includes(value)?"block":"none";
+  });
+});
+</script>
+
+</body>
+</html>
+movies.push({
+  title: "Raanjhanaa",
+  year: "2013",
+  image: "https://i.ibb.co/xxxxx/raanjhanaa.jpg",
+  page: "raanjhanaa.html"
+});
